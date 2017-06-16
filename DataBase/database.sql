@@ -1,0 +1,31 @@
+DROP TABLE comments;
+DROP TABLE friends;
+DROP TABLE users;
+CREATE TABLE friends(
+  id SERIAL PRIMARY KEY,
+  recipientId INTEGER NOT NULL,
+  senderId INTEGER NOT NULL,
+  status VARCHAR(255) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  firstname VARCHAR(255) NOT NULL,
+  lastname VARCHAR(255) NOT NULL,
+  country VARCHAR(255),
+  city VARCHAR(255),
+  age INTEGER,
+  info VARCHAR(255),
+  email VARCHAR(255) UNIQUE,
+  hashpassword TEXT,
+  imgurl VARCHAR(255),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+CREATE TABLE comments(
+  id SERIAL PRIMARY KEY,
+  commentedId INTEGER NOT NULL,
+  userId INTEGER NOT NULL REFERENCES users(id),
+  comments TEXT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

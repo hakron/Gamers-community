@@ -1,0 +1,22 @@
+/*<============= register page ============>*/
+
+#form-cnt {
+  display: flex;
+  align-items: center;
+  flex-flow: column wrap;
+}
+
+#form-cnt .img-responsive {
+  width: 250px;
+
+}
+
+#form-cnt .form-control{
+  font-size: 12px;
+  border-radius: 25px;
+}
+#form-cnt .btn-default {
+  background-color: #234E7F;
+  color: #faf9f9;
+
+}
