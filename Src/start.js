@@ -6,8 +6,10 @@ import axios from './axios';
 // <=====src=======>
 import getSocket from './socket.js';
 import RegisterForm from './Register/RegisterForm';
-import LoginForm from './Login/LoginForm';
+import LoginPage from './Login/LoginPage';
 import App from './App/App';
+import EditProfile from './EditProfile/EditProfile';
+import Profile from './Profile/Profile';
 const userIsLoggedIn = location.pathname !='/welcome';
 const main = document.querySelector('main')
 
@@ -17,13 +19,15 @@ const notLoggedInRouter = (
   <Router history = {hashHistory}>
     <Route path='/' component = {Welcome}>
       <IndexRoute component = {RegisterForm}/>
-      <Route path='/login' component = {LoginForm}/>
+      <Route path='/login' component = {LoginPage}/>
     </Route>
   </Router>
   )
 const loggedInRouter =(
   <Router history = {browserHistory}>
     <Route path='/' component = {App}>
+      <Route path='/profile' component = {Profile}/>
+      <Route path='/editProfile' component = {EditProfile}/>
     </Route>
   </Router>
 )

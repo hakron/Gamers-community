@@ -46,6 +46,8 @@ app.use("/static", express.static(__dirname+"/public"));
 app.use("/uploads", express.static(__dirname+ "/uploads"));
 // <======== routes ========>
 app.use('/', require('./Routes/regisAndLoginRoutes.js'));
+app.use('/', require('./Routes/AppRoutes.js'));
+app.use('/', require('./Routes/ProfileRoutes.js'));
 
 app.get('/', requireUser, function(req, res){
   if (!req.session.user) {
@@ -68,7 +70,7 @@ app.get('/connected/:socketId', (req, res) => {
         io.sockets.sockets[req.params.socketId] &&
             onlineUsers.push({
                 socketId: req.params.socketId,
-                userId: req.session.user.userId
+                userId: req.session.user.id
             });
         console.log('onlineUsers after new connection', onlineUsers);
         io.sockets.emit('updateOnlineUsers', onlineUsers);

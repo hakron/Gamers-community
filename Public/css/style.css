@@ -1,22 +1,167 @@
 /*<============= register page ============>*/
-
-#form-cnt {
+body { font-family: 'Roboto' !important; }
+#welcome {
+  background-image: url("/static/imgs/cover.png");
+  background-repeat: space;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+}
+html {
+  height: 100%;
+  width: 100%;
+}
+#form-regis-cnt {
   display: flex;
   align-items: center;
   flex-flow: column wrap;
+  margin-top: 15%;
 }
 
-#form-cnt .img-responsive {
+#form-regis-cnt .img-responsive {
   width: 250px;
 
 }
 
-#form-cnt .form-control{
+#form-new-user-cnt .form-control{
   font-size: 12px;
   border-radius: 25px;
+}
+#form-new-user-cnt .btn-default {
+  display: flex;
+  background-color: #234E7F;
+  color: #faf9f9;
+  margin: 0 auto;
+
+}
+#errors {
+  color: red;
+  margin: 15px;
+  font-size: 15px;
+  font-weight: bold;
+}
+/*<============ login ===============>*/
+#login-cnt {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap;
+  background: #818698;
+}
+#login-cnt .img-responsive {
+  width: 100px;
+  height: 100px;
+}
+#form-cnt{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 10px;
+}
+#form-cnt .form-group {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+#form-cnt .form-control {
+  padding: 6px 12px;
+  border-radius: 25px;
+  height: 25px !important;
 }
 #form-cnt .btn-default {
   background-color: #234E7F;
   color: #faf9f9;
+}
+#form-cnt p{
+  color: #faf9f9;
+  align-items: baseline;
+  margin: 5px;
+  font-size: 12px;
+}
+#form-cnt a {
+  color: #234E7F;
+  text-decoration: none;
+  margin: 5px;
+}
+#errors {
+  color: red;
+  margin: 15px;
+  font-size: 15px;
+  font-weight: bold;
+}
+/*<========= App ============>*/
+#header {
+  display: flex;
+  background: #818698;
+}
+#profile-data {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+#user-name {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: #faf9f9;
+  margin: 10px;
 
+}
+#profile-pic .img-responsive {
+  height: 75px;
+  width: 100px;
+  margin: 5px;
+  /*border: solid 4px #faf9f9;
+  border-radius: 50%;*/
+}
+#nav {
+  display: flex;
+  flex-direction: row;
+  margin-left: 30px;
+  margin-top: 10px;
+}
+#nav .img-responsive {
+  width: 25px;
+  height: 25px;
+}
+#nav a {
+  color: #faf9f9;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 5px;
+  text-decoration: none;
+  margin: 10px;
+}
+#nav a:hover:not(:last-child) {
+  font-weight: bold;
+  color: white;
+  border-radius: 25px;
+  height: 38px;
+  /*width: 100px;*/
+  background-color: #234E7F;
+  text-align: center;
+}
+.active	{
+  border-radius: 25px;
+  background-color:	#234E7F;
+  color: white !important;
+}
+#logo{
+  display: flex;
+  justify-content: flex-end;
+}
+#logo .img-responsive {
+  width: 150px;
+  height: 88px;
+  margin-left: 945px;
+}
+/*<===== main app page ======>*/
+#search-form {
+  display: flex;
+  justify-content: center;
+  margin: 10px
+}
+#search-form .btn-default{
+  height: 34px;
+  margin-left: 10px;
 }

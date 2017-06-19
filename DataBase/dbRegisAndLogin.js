@@ -3,12 +3,13 @@ var secrets = require('./secrets.json');
 var dbUrl = process.env.DATABASE_URL ||`postgres:${secrets.dbUser}:${secrets.password}@localhost:5432/gamerscommunity`;
 var db = spicePg(dbUrl);
 // use several files depending on the constructor
-function insertUser(name, last_name, country, city, age, email, hash){
+function insertUser(username, name, last_name, country, city, age, email, hash){
   const q = `INSERT INTO users
-  (firstname, lastname, country, city, age, email, hashpassword)
-  VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id;`
+  (username, firstname, lastname, country, city, age, email, hashpassword)
+  VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING id;`
   ;
   const params = [
+    username,
     name,
     last_name,
     country,

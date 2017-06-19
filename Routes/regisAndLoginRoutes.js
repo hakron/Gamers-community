@@ -1,20 +1,21 @@
 const express = require('express');
 router = express.Router();
-const db = require('../DataBase/dbRegisAndLogin.js');
+const db = require('../DataBase/DbRegisAndLogin.js');
 const auth = require('../Utilities/utilities.js');
 
 router.route('/registerNewUser')
 .post((req, res) => {
-  if (!req.body.name || !req.body.lastname || !req.body.email || !req.body.password){
+  if (!req.body.username || !req.body.name || !req.body.lastname || !req.body.email || !req.body.password){
     res.json({
       success:false
     });
 
   } else {
     auth.hashPassword(req.body.password).then(function(hash){
-      db.insertUser(req.body.name, req.body.lastname, req.body.country, req.body.city, req.body.age, req.body.email, hash).then(function(results){
+      db.insertUser(req.body.username, req.body.name, req.body.lastname, req.body.country, req.body.city, req.body.age, req.body.email, hash).then(function(results){
         req.session.user = {
           id : results.id,
+          username: req.body.username,
           name : req.body.name,
           lastname : req.body.lastname,
           country: req.body.country,
@@ -59,6 +60,7 @@ router.route('/loginUser')
                 //data from the database
                 req.session.user={
                   id : results.id,
+                  username: results.username,
                   name : results.firstname,
                   lastname : results.lastname,
                   country: results.country,
@@ -68,7 +70,6 @@ router.route('/loginUser')
                   profilePicUrl: results.imgurl,
                   bio: results.info
                 };
-                // return req.session.user;
                 res.json({
                   userInfo: req.session.user,
                   success: true
@@ -88,6 +89,6 @@ router.route('/loginUser')
 });
 router.get('/logout', function(req, res){
   req.session = null;
-    res.redirect('/welcome#/login');
+  res.redirect('/welcome#/login');
 });
 module.exports = router;

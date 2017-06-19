@@ -44,8 +44,8 @@ export default class LoginForm extends React.Component {
   render(){
     return (
       <div id="login-cnt">
-      <Image src="/static/imgs/controller.png" responsive/>
-      <Form id="login-cnt" horizontal>
+      <Image src="/static/imgs/Logo.png" responsive/>
+      <Form id="form-cnt"  horizontal>
       <FormGroup controlId="formHorizontalEmail" validationState={this.state.validationState}>
       <FormControl type="email" name="email" onChange={this.handleChange} placeholder="Email" />
       </FormGroup>
@@ -63,6 +63,7 @@ export default class LoginForm extends React.Component {
         <p> Not a member? <a href='/welcome'>Register</a></p>
         </Form>
         </div>
+
       );
     }
   }

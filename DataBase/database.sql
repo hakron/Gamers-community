@@ -11,6 +11,7 @@ CREATE TABLE friends(
 );
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
+  username VARCHAR(255) NOT NULL,
   firstname VARCHAR(255) NOT NULL,
   lastname VARCHAR(255) NOT NULL,
   country VARCHAR(255),

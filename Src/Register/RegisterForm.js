@@ -14,11 +14,11 @@ export default class RegisterForm extends React.Component{
       this.setState({ [e.target.name] : e.target.value });
   }
   handleSubmit(e){
-    const { name, lastname, country, city, age, email, password} = this.state;
+    const { username, name, lastname, country, city, age, email, password} = this.state;
     e.preventDefault();
     console.log(this.state,"this is the state");
     axios.post('/registerNewUser', {
-      name, lastname, country, city, age, email, password
+      username, name, lastname, country, city, age, email, password
     })
     .then((res) => {
       var validationState;
@@ -35,9 +35,14 @@ export default class RegisterForm extends React.Component{
   }
   render() {
     return (
-      <div id="form-cnt">
+      <div id="form-regis-cnt">
           <Image src="/static/imgs/controller.png" responsive/>
-        <Form id="form-cnt" horizontal>
+        <Form id="form-new-user-cnt" horizontal>
+
+        <FormGroup controlId="formHorizontalUserName" validationState={this.state.validationState}>
+        <FormControl type="text" name="username"  maxlength="250" onChange={this.handleChangeFields} placeholder="User Name" />
+        <FormControl.Feedback />
+        </FormGroup>
           <FormGroup controlId="formHorizontalFirstnName" validationState={this.state.validationState} >
             <FormControl  type="text"  name="name"  maxlength="250" onChange={this.handleChangeFields} placeholder="First Name" />
             <FormControl.Feedback />

@@ -1,11 +1,9 @@
 import React from 'react';
 import axios from '../axios';
-import AppNav from './AppNav';
-import SearchGames from './SearchGames';
 import {Button, Form, Image, FormGroup, ControlLabel, FormControl, Modal} from 'react-bootstrap';
 import {Router, Route, Link, IndexRoute, hashHistory, browserHistory, IndexLink } from 'react-router';
 //change name to App?
-export default class App extends React.Component{
+export default class SearchGames extends React.Component{
   constructor(props) {
     super(props);
     this.state ={ }
@@ -14,12 +12,14 @@ export default class App extends React.Component{
   componentDidMount() {
 
   }
-    render() {
-      return (
-      <div id="main-cnt">
-      <AppNav/>
-      <SearchGames/>
-      </div>
-      );
-    }
+  render() {
+    return (
+      <div id="search-form">
+      <FormGroup>
+          <FormControl type="text" placeholder="Search" />
+        </FormGroup>
+        <Button type="submit"> Search </Button>
+        </div>
+    );
   }
+}
