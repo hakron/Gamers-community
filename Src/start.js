@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, Link, IndexRoute, hashHistory, browserHistory } from 'react-router';
+import { Router, Route, Link, IndexRoute,  browserHistory } from 'react-router';
 import * as io from 'socket.io-client';
 import axios from './axios';
 // <=====src=======>
@@ -10,14 +10,15 @@ import LoginPage from './Login/LoginPage';
 import App from './App/App';
 import EditProfile from './EditProfile/EditProfile';
 import Profile from './Profile/Profile';
+import ChatRooms from './ChatRooms/ChatRooms';
 const userIsLoggedIn = location.pathname !='/welcome';
 const main = document.querySelector('main')
 
 console.log(location.pathname, userIsLoggedIn);
 
 const notLoggedInRouter = (
-  <Router history = {hashHistory}>
-    <Route path='/' component = {Welcome}>
+  <Router history = {browserHistory}>
+    <Route path='/welcome' component = {Welcome}>
       <IndexRoute component = {RegisterForm}/>
       <Route path='/login' component = {LoginPage}/>
     </Route>
@@ -26,8 +27,9 @@ const notLoggedInRouter = (
 const loggedInRouter =(
   <Router history = {browserHistory}>
     <Route path='/' component = {App}>
-      <Route path='/profile' component = {Profile}/>
-      <Route path='/editProfile' component = {EditProfile}/>
+      <Route path='profile' component = {Profile}/>
+      <Route path='editProfile' component = {EditProfile}/>
+      <Route path='chatRooms' component = {ChatRooms}/>
     </Route>
   </Router>
 )

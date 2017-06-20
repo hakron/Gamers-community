@@ -1,49 +1,52 @@
 import React from 'react';
 import axios from '../axios';
 import LoginForm from './LoginForm';
-// import {getChannelInfo, getStreamInfo} from './Api/Api';
+import Stream from './Stream';
+
 import {Button, Form, Image, FormGroup, ControlLabel, FormControl, Checkbox} from 'react-bootstrap';
-import { Router, Route, Link, IndexRoute, hashHistory } from 'react-router';
+import { Link } from 'react-router';
 
 export default class LoginPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {}
   }
-  // componentDidMount(){
-  //   axios({
-  //     method: 'get',
-  //     url: 'https://api.twitch.tv/kraken/streams/',
-  //     dataType: 'json',
-  //     stream_type: 'live',
-  //     limit: 5,
-  //     headers: {
-  //       'Client-ID': 'duecfq1es6f5rgg0bxny2jgir00ggz'
-  //     },
-  //     success: (response) => {
-  //       status = response.stream.channel.status;
-  //       online = true;
-  //       icon = response.stream.channel.logo;
-  //       user = response.stream.channel.display_name;
-  //       game = response.streams.channel.game,
-  //       url = response.streams.channel.url,
-  //       views = response.streams.channel.views,
-  //     });
-  //     this.setState({
-  //       icon: icon,
-  //       user: user,
-  //       status: status,
-  //       game: game,
-  //       url: url,
-  //       views: views
-  //     });
-  //   });
-  // }
+  componentDidMount(){
+    console.log("LoginPage componentDidMount");
+    axios({
+      method: 'get',
+      url: 'https://api.twitch.tv/kraken/streams/?limit=3',
+      dataType: 'json',
+      headers: {
+        'Client-ID': 'duecfq1es6f5rgg0bxny2jgir00ggz'
+      }
+    }).then((response) => {
+      console.log(response);
+        this.setState({ streams: response.data.streams }, function(){
+          console.log("inside setState finished");
+          console.log(this.state.streams);
+        });
+    }).catch(function(err){
+      console.log(err);
+    })
+  }
+  renderStreams() {
+      console.log("renderStreams started", this.state.streams);
+    return this.state.streams.map((stream)=> {
+      return (
+        <Stream stream = {stream}/>
+      );
+    });
+
+  }
   render(){
     return (
       <div>
-      <LoginForm/>
-      <h1> {this.state.user} </h1>
+        <LoginForm/>
+        <div id="streams-cnt">
+        {this.state.streams && this.renderStreams()}
+        </div>
+        <div id="cover"></div>
       </div>
     );
   }

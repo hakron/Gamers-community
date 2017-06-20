@@ -1,12 +1,17 @@
 /*<============= register page ============>*/
-body { font-family: 'Roboto' !important; }
-#welcome {
+body {
+font-family: 'Source Code Pro' !important;
+font-weight: bold;
+height:100%;
+background-color: #f3f4f6 !important;
+}
+/*#welcome {
   background-image: url("/static/imgs/cover.png");
   background-repeat: space;
   background-size: cover;
   background-position: center;
   min-height: 100vh;
-}
+}*/
 html {
   height: 100%;
   width: 100%;
@@ -45,7 +50,8 @@ html {
   display: flex;
   justify-content: space-between;
   flex-flow: row wrap;
-  background: #818698;
+  background: #878c90;
+    box-shadow: inset 1px 1px 2px 0 #707070;
 }
 #login-cnt .img-responsive {
   width: 100px;
@@ -87,10 +93,51 @@ html {
   font-size: 15px;
   font-weight: bold;
 }
+#streams-cnt {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: auto;
+  height: 50%;
+  width: 50%;
+}
+#streams-cnt .img-responsive {
+  width: 50px;
+  height: 50px;
+  align-self:  center;
+}
+#single-stream {
+margin: 50px;
+}
+#stream-info-data {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  height: 260px;
+  width: 305px;
+}
+#stream-info-data p {
+margin: 5px;
+color: #234E7F;
+}
+#cover {
+  background-image: url("/static/imgs/cover2.png");
+  background-position: center;
+  background-size: contain;
+  height: 300px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
 /*<========= App ============>*/
 #header {
   display: flex;
   background: #818698;
+  background-image: url("/static/imgs/cover.png");
+
+  background-position: center;
 }
 #profile-data {
   display: flex;
@@ -164,4 +211,31 @@ html {
 #search-form .btn-default{
   height: 34px;
   margin-left: 10px;
+}
+/*<======Chat Rooms ======>*/
+.tabs {
+  margin: 25px;
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 3px;
+}
+.tabs-labels {
+  margin: 0;
+  padding: 0;
+}
+.tabs-labels li {
+  display: inline-block;
+}
+.tabs-labels li a {
+  padding: 8px 12px;
+  display: block;
+  color: #444;
+  text-decoration: none;
+  border-bottom: 2px solid #f5f5f5;
+}
+.tabs-labels li a.active {
+  border-bottom-color: #337ab7;
+}
+.tabs-content {
+  padding: 25px;
 }

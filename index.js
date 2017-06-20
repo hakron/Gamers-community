@@ -49,13 +49,6 @@ app.use('/', require('./Routes/regisAndLoginRoutes.js'));
 app.use('/', require('./Routes/AppRoutes.js'));
 app.use('/', require('./Routes/ProfileRoutes.js'));
 
-app.get('/', requireUser, function(req, res){
-  if (!req.session.user) {
-    res.redirect('/Welcome');
-  } else {
-    res.sendFile(__dirname + '/index.html');
-  }
-});
 app.get('/welcome', function(req, res){
   if (req.session.user){
     res.redirect('/');
@@ -75,6 +68,14 @@ app.get('/connected/:socketId', (req, res) => {
         console.log('onlineUsers after new connection', onlineUsers);
         io.sockets.emit('updateOnlineUsers', onlineUsers);
     }
+});
+
+app.get('/', requireUser, function(req, res){
+  if (!req.session.user) {
+    res.redirect('/welcome');
+  } else {
+    res.sendFile(__dirname + '/index.html');
+  }
 });
 
 

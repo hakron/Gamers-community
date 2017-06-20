@@ -14,9 +14,7 @@ export default class WallUpdates extends React.Component {
   componentDidMount() {
     axios.get(`/getUserComment/${this.props.commentedId}/comments`).then((results) => {
 
-      this.setState({ comments: results.data.comments }, function(){
-
-      });
+      this.setState({ comments: results.data.comments });
     });
   }
 

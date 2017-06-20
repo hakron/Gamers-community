@@ -39,11 +39,11 @@ export default class AppNav extends React.Component{
                 <p id="user-info">{this.state.username}</p>
               </div>
               <div id="nav">
-              <Link to="/profile" activeClassName='active'>Profile</Link>
-              <Link to="/friends" activeClassName='active'>Friends</Link>
-              <Link to="/chatRoom" activeClassName='active'>Chat Room</Link>
-              <a href="www.polygon.com" target="_blank"> Polygon </a>
-              <a href="www.twitch.com" target="_blank"> Twitch Tv </a>
+              <Link to="profile" activeClassName='active'>Profile</Link>
+              <Link to="friends" activeClassName='active'>Friends</Link>
+              <Link to="chatRooms" activeClassName='active'>Chat Room</Link>
+              <a href="https://www.polygon.com" target="_blank"> Polygon </a>
+              <a href="https://www.twitch.com" target="_blank"> Twitch Tv </a>
               <a href="/logout"><Image src="/static/imgs/logout.png" responsive/> </a>
               </div>
               <div id="logo">
@@ -51,7 +51,7 @@ export default class AppNav extends React.Component{
               </div>
         </div>
       </div>
-  
+
     );
   }
 }
