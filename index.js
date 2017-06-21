@@ -5,21 +5,6 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const cookieSession = require('cookie-session');
 const csurf = require('csurf');
-const multer = require('multer');
-const diskStorage = multer.diskStorage({
-  destination: function(req, file, callback){
-    callback(null, __dirname + '/uploads');
-  },
-  filename: function (req, file, callback){
-    callback(null, Date.now() + '_' + Math.floor(Math.random() * 99999999) + '_' + file.originalname);
-  }
-});
-const uploader = multer({
-  storage: diskStorage,
-  limits: {
-    filesize: 2097152
-  }
-});
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 const port = 8080;
@@ -43,12 +28,13 @@ app.use(function(req, res, next){
 });
 
 app.use("/static", express.static(__dirname+"/public"));
-app.use("/uploads", express.static(__dirname+ "/uploads"));
+app.use("/Uploads", express.static(__dirname+ "/Uploads"));
 // <======== routes ========>
 app.use('/', require('./Routes/regisAndLoginRoutes.js'));
 app.use('/', require('./Routes/AppRoutes.js'));
 app.use('/', require('./Routes/ProfileRoutes.js'));
-
+app.use('/', require('./Routes/EditProfileRoutes.js'));
+app.use('/', require('./Routes/ProfileRoutes.js'));
 app.get('/welcome', function(req, res){
   if (req.session.user){
     res.redirect('/');

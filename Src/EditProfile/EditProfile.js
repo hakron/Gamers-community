@@ -7,45 +7,52 @@ export default class EditProfile extends React.Component{
   constructor(props) {
     super(props);
     this.state = {validationState: null}
-
+    this.handleEditSubmit = this.handleEditSubmit.bind(this);
+    this.handleChangeProfile = this.handleChangeProfile.bind(this);
+  }
+  handleChangeProfile(e) {
+    console.log(e.target.bio);
+    this.setState({
+      [e.target.name] : e.target.value
+    });
+  }
+  handleEditSubmit(e){
+    const { name, lastname, country, city, age } = this.state;
+    e.preventDefault();
+    console.log(this.state,"this is the state");
+    axios.post('/updateUserProfile',{
+       name, lastname, country, city, age
+    });
   }
   render() {
     return (
       <div id="form-cnt">
-          <Form id="form-cnt" horizontal>
-          <FormGroup controlId="formHorizontalUserName" validationState={this.state.validationState} >
-            <FormControl  type="text"  name="username"  onChange={this.handleChangeFields} placeholder="User Name"/>
-            <FormControl.Feedback />
-          </FormGroup>
+        <Form id="form-cnt" horizontal>
           <FormGroup controlId="formHorizontalFirstnName" validationState={this.state.validationState} >
-            <FormControl  type="text"  name="name"  onChange={this.handleChangeFields} placeholder="First Name" />
+            <FormControl  type="text"  name="name"  onChange={this.handleChangeProfile} placeholder="First Name" />
             <FormControl.Feedback />
           </FormGroup>
           <FormGroup controlId="formHorizontalLastName" validationState={this.state.validationState}>
-            <FormControl type="text" name="lastname"  onChange={this.handleChangeFields} placeholder="Last Name" />
+            <FormControl type="text" name="lastname"  onChange={this.handleChangeProfile} placeholder="Last Name" />
             <FormControl.Feedback />
           </FormGroup>
           <FormGroup controlId="formHorizontalCity" validationState={this.state.validationState}>
-            <FormControl type="text" name="city"  onChange={this.handleChangeFields} placeholder="City" />
+            <FormControl type="text" name="city"  onChange={this.handleChangeProfile} placeholder="City" />
             <FormControl.Feedback />
           </FormGroup>
           <FormGroup controlId="formHorizontalCountry" validationState={this.state.validationState}>
-            <FormControl type="text" name="country"  onChange={this.handleChangeFields} placeholder="Country" />
+            <FormControl type="text" name="country"  onChange={this.handleChangeProfile} placeholder="Country" />
             <FormControl.Feedback />
           </FormGroup>
           <FormGroup controlId="formHorizontalAge" validationState={this.state.validationState}>
-            <FormControl type="text" name="age"  onChange={this.handleChangeFields} placeholder="Age" />
+            <FormControl type="text" name="age"  onChange={this.handleChangeProfile} placeholder="Age" />
             <FormControl.Feedback />
           </FormGroup>
-          <FormGroup controlId="formHorizontalEmail" validationState={this.state.validationState}>
-            <FormControl type="email" name="email" onChange={this.handleChangeFields}  placeholder="Email" />
-            <FormControl.Feedback />
-          </FormGroup>
-      <div id="errors">
-      {this.state.errorFields}
-      </div>
+            <div id="errors">
+              {this.state.errorFields}
+            </div>
           <FormGroup>
-            <Button type="submit">
+            <Button type="submit" onClick= {this.handleEditSubmit}>
               Save Changes
             </Button>
           </FormGroup>

@@ -33,7 +33,7 @@ export default class AppNav extends React.Component{
         <div id="header">
           <div id="profile-data">
             <div id="profile-pic">
-            <Link to="/editProfile"><Image src={this.state.profilePicUrl}responsive/> </Link>
+            <Link to="/editProfile"><Image src={this.state.profilePicUrl} thumbnail responsive/> </Link>
             </div>
               <div id="user-name">
                 <p id="user-info">{this.state.username}</p>

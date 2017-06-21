@@ -192,6 +192,7 @@ color: #234E7F;
   border-radius: 25px;
   background-color:	#234E7F;
   color: white !important;
+  height: 38px;
 }
 #logo{
   display: flex;
@@ -211,6 +212,11 @@ color: #234E7F;
 #search-form .btn-default{
   height: 34px;
   margin-left: 10px;
+}
+/*<========= ImageModal ============>*/
+#preview-img {
+  height: 300px;
+  width: 350px
 }
 /*<======Chat Rooms ======>*/
 .tabs {
@@ -238,4 +244,72 @@ color: #234E7F;
 }
 .tabs-content {
   padding: 25px;
+}
+/*<=========== profile =======>*/
+#profile-cnt {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+#profile-user-info {
+  margin: 10px;
+}
+/*<============= wall container =============>*/
+#wall-cnt {
+  /*display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  height:auto;*/
+  margin-left: 50px;
+  margin-top: 50px;
+  background-color: black;
+}
+#wallform-cnt {
+  flex-direction: column;
+  margin: 29px;
+}
+#wallform-cnt textarea{
+  resize: none;
+  width: 670px;
+  height: 99px;
+  padding: 10px;
+  border: solid 1px #fff;
+  box-shadow: inset 1px 1px 2px 0 #707070;
+  transition: box-shadow 0.3s;
+}
+#wallform-cnt textarea:focus, textarea.focus {
+  box-shadow: inset 1px 1px 2px 0 #c9c9c9;
+}
+#wallupdates-cnt { padding: 10px; }
+#wall-post{
+  display: flex;
+  margin: 0 auto;
+}
+#single-comment {
+  display: flex;
+  flex-direction: row;
+  border: solid 1px green;
+  margin: 5px;
+  background-color: white;
+}
+#comment{
+  font-size: 20px;
+  margin-left: 5px;
+  align-self: center;
+}
+#user-info-data{
+  border: solid 1px #fff;
+  box-shadow: inset 1px 1px 2px 0 #707070;
+  margin: 5px;
+}
+#user-info-data .img-responsive{
+  width: 100px;
+  height: 100px;
+  margin: 5px;
+  cursor: none;
+}
+#user-info-data p {
+  text-align: center;
+  margin: 5px;
+  /*font-weight: bold;*/
 }

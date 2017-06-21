@@ -21,7 +21,7 @@ router.route('/registerNewUser')
           country: req.body.country,
           city: req.body.city,
           age: req.body.age,
-          email : req.body.email
+          email : req.body.email,
         };
         res.json({
           success:true
@@ -58,6 +58,7 @@ router.route('/loginUser')
               db.getUser(req.body.email)
               .then(function(results){
                 //data from the database
+                // console.log(results.imgurl,"imgurl");
                 req.session.user={
                   id : results.id,
                   username: results.username,
@@ -67,7 +68,7 @@ router.route('/loginUser')
                   city: results.city,
                   age: results.age,
                   email : req.body.email,
-                  profilePicUrl: results.imgurl,
+                  profilePicUrl: '/Uploads/' + results.imgurl,
                   bio: results.info
                 };
                 res.json({

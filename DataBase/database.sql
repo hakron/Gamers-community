@@ -25,8 +25,8 @@ CREATE TABLE users (
 );
 CREATE TABLE comments(
   id SERIAL PRIMARY KEY,
-  commentedId INTEGER NOT NULL,
-  userId INTEGER NOT NULL REFERENCES users(id),
+  commentedid INTEGER NOT NULL,
+  userid INTEGER NOT NULL REFERENCES users(id),
   comments TEXT,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
