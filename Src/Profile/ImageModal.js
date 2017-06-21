@@ -34,7 +34,6 @@ export default class ImageModal extends React.Component {
     var formData = new FormData();
     formData.append('file', this.state.fileToUpload);
     axios.post('/userInsertProfilePic', formData).then((res) => {
-      console.log(res, "results from /userInsertProfilePic");
       this.props.setImg(res.data.newImagePath);
       this.setState({
         file : res.data.newImagePath

@@ -11,6 +11,7 @@ import App from './App/App';
 import EditProfile from './EditProfile/EditProfile';
 import Profile from './Profile/Profile';
 import ChatRooms from './ChatRooms/ChatRooms';
+import Friends from './Friends/Friends';
 const userIsLoggedIn = location.pathname !='/welcome';
 const main = document.querySelector('main')
 

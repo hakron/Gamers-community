@@ -6,7 +6,8 @@ var db = spicePg(dbUrl);
 function editUserBio(info, id) {
   const q = `UPDATE users
   SET info = $1
-  WHERE id = $2;`
+  WHERE id = $2
+  RETURNING info;`
   ;
   const params = [
     info,
@@ -22,7 +23,8 @@ function editUserBio(info, id) {
 function editUsername(username, id) {
   const q = `UPDATE users
   SET username = $1
-  WHERE id =$2;`
+  WHERE id =$2
+  RETURNING username;`
   const params = [username, id];
   return db.query(q, params).then(function(results){
     return results

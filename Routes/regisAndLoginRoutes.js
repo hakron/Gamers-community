@@ -58,7 +58,7 @@ router.route('/loginUser')
               db.getUser(req.body.email)
               .then(function(results){
                 //data from the database
-                // console.log(results.imgurl,"imgurl");
+              
                 req.session.user={
                   id : results.id,
                   username: results.username,

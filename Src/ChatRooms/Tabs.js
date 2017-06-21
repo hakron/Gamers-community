@@ -11,7 +11,7 @@ export default class Tabs extends React.Component{
 
   }
   handleTabsClick(index, e){
-  
+
     this.setState({selected: index});
   }
   renderTitles() {
@@ -19,7 +19,7 @@ export default class Tabs extends React.Component{
       let activeClass = (this.state.selected === index ? 'active' : '');
       return (
         <li key={index}>
-          <a href="x" onClick={this.handleTabsClick(this, index)}>
+          <a href="#" onClick={this.handleTabsClick(this, index)}>
             {child.props.label}
           </a>
         </li>

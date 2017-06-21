@@ -28,6 +28,7 @@ router.route('/userProfileInfo')
     lastname: req.session.user.lastname,
     country: req.session.user.country,
     city: req.session.user.city,
+    bio: req.session.user.bio,
     profilePicUrl: req.session.user.profilePicUrl
   };
   console.log("user info", userInfo);
@@ -40,6 +41,7 @@ router.route('/userInsertProfilePic')
 .post(requireUser, uploader.single('file'),(req, res) => {
   if (req.file) {
     db.insertImg( req.file.filename, req.session.user.id).then(function(results){
+        req.session.user.profilePicUrl = '/Uploads/' + results.imgurl;
       res.json({
         success:true,
         newImagePath:'/Uploads/' + results.imgurl
@@ -94,7 +96,16 @@ router.route('/getUserComment/:commentedId/comments')
     });
   });
 });
-
+router.route('/userBio')
+  .get(requireUser, (req, res) => {
+  const userInfo = {
+    bio: req.session.user.bio
+  };
+  res.json({
+    succes: true,
+    results:userInfo
+  });
+});
 function requireUser(req, res, next){
   if(req.session.user){
     return next();

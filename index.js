@@ -35,6 +35,9 @@ app.use('/', require('./Routes/AppRoutes.js'));
 app.use('/', require('./Routes/ProfileRoutes.js'));
 app.use('/', require('./Routes/EditProfileRoutes.js'));
 app.use('/', require('./Routes/ProfileRoutes.js'));
+app.use('/', require('./Routes/EditBioAndUsernameRoutes.js'));
+app.use('/', require('./Routes/FriendsRoutes.js'));
+
 app.get('/welcome', function(req, res){
   if (req.session.user){
     res.redirect('/');
