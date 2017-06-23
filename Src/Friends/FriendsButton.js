@@ -15,7 +15,7 @@ export default class FriendsButton extends React.Component {
     axios.get(`/getFrienshipStatus/${this.props.friendId}/friendship`).then((results) => {
       const {friendshipStatusInfo} = results.data;
       let currentStatus;
-      if (friendshipStatusInfo === null){
+      if (!friendshipStatusInfo){
         currentStatus = null;
       } else {
         currentStatus = friendshipStatusInfo.status;

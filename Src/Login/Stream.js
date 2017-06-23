@@ -1,7 +1,6 @@
 import React from 'react';
 import {Image} from 'react-bootstrap';
 export default function Stream(props) {
-  console.log(props);
     return (
       <div id="single-stream">
         <div id="stream-info-data">

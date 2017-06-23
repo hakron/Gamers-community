@@ -11,15 +11,8 @@ export default class WallUpdates extends React.Component {
 
   }
 
-  componentDidMount() {
-    axios.get(`/getUserComment/${this.props.commentedId}/comments`).then((results) => {
-
-      this.setState({ comments: results.data.comments });
-    });
-  }
-
   renderComments(){
-    return this.state.comments.map((comment)=> {
+    return this.props.comments.map((comment)=> {
       return (
         <Comment comment = {comment}/>
       )
@@ -30,7 +23,7 @@ export default class WallUpdates extends React.Component {
   render() {
     return (
       <div id="wallupdates-cnt">
-      <div className="single-comments"> {this.renderComments()} </div>
+        <div className="single-comments"> {this.renderComments()} </div>
       </div>
     );
   }

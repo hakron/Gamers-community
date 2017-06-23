@@ -1,6 +1,6 @@
 const express = require('express');
 router = express.Router();
-const db = require('../DataBase/DbEditBioAndUsername.js');
+const db = require('../DataBase/DbEditBio.js');
 
 router.route('/editUserBio')
   .post(requireUser,(req, res) => {

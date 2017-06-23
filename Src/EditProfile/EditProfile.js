@@ -11,7 +11,6 @@ export default class EditProfile extends React.Component{
     this.handleChangeProfile = this.handleChangeProfile.bind(this);
   }
   handleChangeProfile(e) {
-    console.log(e.target.bio);
     this.setState({
       [e.target.name] : e.target.value
     });
@@ -19,15 +18,15 @@ export default class EditProfile extends React.Component{
   handleEditSubmit(e){
     const { name, lastname, country, city, age } = this.state;
     e.preventDefault();
-    console.log(this.state,"this is the state");
     axios.post('/updateUserProfile',{
        name, lastname, country, city, age
     });
+    location.replace('/');
   }
   render() {
     return (
-      <div id="form-cnt">
-        <Form id="form-cnt" horizontal>
+      <div id="edit-form-cnt">
+        <Form id="edit-form-cnt" horizontal>
           <FormGroup controlId="formHorizontalFirstnName" validationState={this.state.validationState} >
             <FormControl  type="text"  name="name"  onChange={this.handleChangeProfile} placeholder="First Name" />
             <FormControl.Feedback />
@@ -57,6 +56,7 @@ export default class EditProfile extends React.Component{
             </Button>
           </FormGroup>
         </Form>
+        <div id="cover"></div>
       </div>
     );
   }

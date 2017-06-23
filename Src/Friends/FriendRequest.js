@@ -6,7 +6,8 @@ export default function FriendRequest(props) {
       <div id="single-friend-request">
         <div id="userData">
           <Image src={props.friendRequest.imgurl} responsive/>
-          <p>{props.friendRequest.firstname} {props.friendRequest.lastname} </p>
+          <p>{props.friendRequest.username} </p>
+          <p>{props.friendRequest.city} {props.friendRequest.country}</p>
         </div>
       </div>
     );

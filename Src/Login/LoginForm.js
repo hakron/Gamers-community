@@ -26,7 +26,6 @@ export default class LoginForm extends React.Component {
     })
     .then((res) => {
       var validationState;
-      console.log(res.data, "userInfo");
       if(!res.data.success){
         validationState = 'error',
         this.setState({
@@ -34,7 +33,6 @@ export default class LoginForm extends React.Component {
           errorFields: res.data.notExists ? 'Email does not exists' : res.data.error ? 'Wrong Password' : 'Complete all the fields to continue'
         });
       } else {
-        console.log("submit works");
         location.replace('/');
       }
     }).catch(function (err) {

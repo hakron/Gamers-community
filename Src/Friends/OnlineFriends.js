@@ -8,14 +8,23 @@ export default class OnlineFriends extends React.Component {
     super(props);
     this.state ={
       onlineUsersInfo: [],
-      msg: "no users online"
+      msg: "no friends online",
+      isChatOpen: false
     }
 
     this.renderOnlineFriends = this.renderOnlineFriends.bind(this);
+    this.openChatModal = this.openChatModal.bind(this);
+    this.closeChatModal = this.closeChatModal.bind(this);
+}
+openChatModal() {
+  this.setState({ isChatOpen: true })
+}
+
+closeChatModal() {
+  this.setState({isChatOpen:false})
 }
 componentDidMount() {
-  axios.get('/onlineUsers').then((results) => {
-    console.log("OnlineFriends users", results.data);
+  axios.get('/onlineFriends').then((results) => {
     this.setState({
       onlineUsersInfo: results.data.onlineUsersInfo,
      })
@@ -23,7 +32,6 @@ componentDidMount() {
 }
 
 renderOnlineFriends(){
-  console.log("inside of renderOnlineFriends, this is the state", this.state);
   if(this.state.onlineUsersInfo){
     return this.state.onlineUsersInfo.map((onlineFriend)=> {
       return (
@@ -31,17 +39,14 @@ renderOnlineFriends(){
       )
     });
   } else {
-console.log("this.state.onlineUsersInfo is empty");
+    console.log("this.state.onlineUsersInfo is empty");
   }
 
 }
 render() {
   return (
     <div id="online-friends-cnt">
-      <p> Online Friends </p>
-      <div>
-      {this.state.errorFields}
-      </div>
+      <p id="gamers-online"> Gamers Online </p>
       <div id="single-online-friend"> {this.renderOnlineFriends()} </div>
     </div>
   );

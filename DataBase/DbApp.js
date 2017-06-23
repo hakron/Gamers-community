@@ -10,9 +10,21 @@ function getUser(email) {
   return db.query(q, [email]).then(function( results) {
     return results.rows[0];
   }).catch(function(err){
-    console.log(err);
+    console.log("there was an error in getUser", err);
 
   });
 
 }
+// function getUsersNames() {
+//   const q = `SELECT username, imgurl
+//   FROM users;`
+//   ;
+//   return db.query(q, []).then(function( results ){
+//     return results;
+//   }).catch(function(err){
+//     console.log(err);
+//     throw err;
+//   });
+// }
 exports.getUser = getUser;
+// exports.getUsersNames = getUsersNames;

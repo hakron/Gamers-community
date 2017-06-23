@@ -20,6 +20,47 @@ router.route('/getAllFriendsAndPendingRequest')
   });
 
 });
+router.route('/getFrienshipStatus/:friendId/friendship')
+.get(requireUser, (req, res) => {
+  var otherUserId =req.params.friendId;
+  db.getFrienshipStatus(req.session.user.id, otherUserId).then(function(results){
+    res.json({ friendshipStatusInfo: results});
+  }).catch(function(err){
+    console.log(err);
+    res.json({ err: true });
+  });
+});
+router.route('/userAddFriend/:friendId/addFriends')
+.post(requireUser, (req, res) => {
+  var otherUserId = req.params.friendId;
+  db.insertFriend(req.session.user.id, otherUserId).then(function(results){
+    res.json({status: results.status});
+  }).catch(function(err){
+    console.log(err);
+    res.json({error: true});
+  });
+});
+router.route('/userAcceptFriend/:friendId/acceptFriendship')
+.post(requireUser, (req, res) => {
+  var otherUserId = req.params.friendId;
+  db.acceptFriendRequest(req.session.user.id, otherUserId).then(function(results){
+    res.json({status: results.status});
+  }).catch(function(err){
+    console.log(err);
+    res.json({error: true});
+  });
+});
+router.route('/userEndFriendship/:friendId/endFriendship')
+.post(requireUser, (req, res) => {
+  var otherUserId =req.params.friendId;
+  db.eliminateFriend(req.session.user.id, otherUserId).then(function(results){
+    res.json({status:results.status});
+  }).catch(function(err){
+    console.log(err);
+    res.json({error: true});
+  });
+});
+
 function requireUser(req, res, next){
   if(req.session.user){
     return next();

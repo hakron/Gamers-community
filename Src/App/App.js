@@ -11,15 +11,18 @@ export default class App extends React.Component{
     this.state ={ }
 
   }
-  componentDidMount() {
 
-  }
     render() {
+      const children = React.cloneElement(this.props.children, {
+        username: this.state.username,
+        profilePicUrl: this.state.profilePicUrl,
+        bio: this.state.bio
+      });
       return (
       <div id="main-cnt">
         <AppNav/>
         {this.props.children}
-        
+
       </div>
       );
     }

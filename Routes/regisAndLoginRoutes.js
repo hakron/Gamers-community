@@ -58,7 +58,7 @@ router.route('/loginUser')
               db.getUser(req.body.email)
               .then(function(results){
                 //data from the database
-              
+
                 req.session.user={
                   id : results.id,
                   username: results.username,
@@ -68,7 +68,7 @@ router.route('/loginUser')
                   city: results.city,
                   age: results.age,
                   email : req.body.email,
-                  profilePicUrl: '/Uploads/' + results.imgurl,
+                  profilePicUrl: results.imgurl,
                   bio: results.info
                 };
                 res.json({

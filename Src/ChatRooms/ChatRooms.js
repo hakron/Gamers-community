@@ -1,6 +1,7 @@
 import React from 'react';
 import Tabs from './Tabs';
 import Panes from './Panes';
+import Chat from './Chat';
 import { Router, Route, Link, IndexRoute, hashHistory } from 'react-router';
 
 export default class ChatRooms extends React.Component{
@@ -11,16 +12,25 @@ export default class ChatRooms extends React.Component{
   render() {
       return (
         <div>
-        asdasdasdasdasd
           <Tabs selected={0}>
-            <Panes label="Tab 1">
-              <div>This is my tab 1 contents!</div>
+            <Panes label="Main Room">
+              <Chat chatRoomName="Main Room"/>
             </Panes>
-            <Panes label="Tab 2">
-              <div>This is my tab 2 contents!</div>
+
+            <Panes label="World of Warcraft">
+              <Chat chatRoomName="World of Warcraft"/>
             </Panes>
-            <Panes label="Tab 3">
-              <div>This is my tab 3 contents!</div>
+
+            <Panes label="League of Legends">
+              <Chat chatRoomName="League of Legends"/>
+            </Panes>
+
+            <Panes label="Counter Strike">
+              <Chat chatRoomName="Counter Strike"/>
+            </Panes>
+
+            <Panes label="Squad">
+              <Chat chatRoomName="Squad"/>
             </Panes>
           </Tabs>
         </div>

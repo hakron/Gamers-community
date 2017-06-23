@@ -31,7 +31,6 @@ router.route('/userProfileInfo')
     bio: req.session.user.bio,
     profilePicUrl: req.session.user.profilePicUrl
   };
-  console.log("user info", userInfo);
   res.json({
     succes: true,
     results:userInfo
@@ -41,10 +40,10 @@ router.route('/userInsertProfilePic')
 .post(requireUser, uploader.single('file'),(req, res) => {
   if (req.file) {
     db.insertImg( req.file.filename, req.session.user.id).then(function(results){
-        req.session.user.profilePicUrl = '/Uploads/' + results.imgurl;
+        req.session.user.profilePicUrl = results.imgurl;
       res.json({
         success:true,
-        newImagePath:'/Uploads/' + results.imgurl
+        newImagePath: results.imgurl
       });
     }).catch(function (err) {
       console.log(err);
@@ -63,39 +62,7 @@ router.route('/previewUserProfilePic')
     file: '/Uploads/' + req.file.filename
   });
 });
-router.route('/insertComment/:commentedId')
-.post(requireUser, (req, res) => {
-  var profileThatWasCommented;
-  if(req.params.commentedId === "undefined"){
-    profileThatWasCommented = req.session.user.id;
-  } else {
-    profileThatWasCommented = req.params.commentedId;
-  }
-  // console.log(profileThatWasCommented, "this is the commentedId");
-  db.insertComment(profileThatWasCommented, req.session.user.id, req.body.comment).then(function(results){
-    res.json({
-      success:true,
-      comment: req.body.comment
-    });
-  }).catch(function(err){
-    console.log(err);
-  });
-});
-router.route('/getUserComment/:commentedId/comments')
-.get(requireUser, (req, res)  => {
-  var profileThatWasCommented;
-  if(req.params.commentedId === "undefined"){
-    profileThatWasCommented = req.session.user.id;
-  } else {
-    profileThatWasCommented = req.params.commentedId;
-  }
-  db.getComments(profileThatWasCommented).then(function (comments) {
-    res.json({
-      success: true,
-      comments: comments
-    });
-  });
-});
+
 router.route('/userBio')
   .get(requireUser, (req, res) => {
   const userInfo = {

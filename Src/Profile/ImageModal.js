@@ -48,7 +48,6 @@ export default class ImageModal extends React.Component {
     } else {
       imagePreviewSource = this.props.profilePicUrl;
     }
-    console.log(imagePreviewSource, "imagePreviewSource");
     return (
 
         <Modal show={this.props.isModalOpen} onHide={this.closeModal}>

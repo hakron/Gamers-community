@@ -11,7 +11,9 @@ import App from './App/App';
 import EditProfile from './EditProfile/EditProfile';
 import Profile from './Profile/Profile';
 import ChatRooms from './ChatRooms/ChatRooms';
+// import Chat from './ChatRooms/Chat';
 import Friends from './Friends/Friends';
+import ProfileOP from './ProfileOp'
 const userIsLoggedIn = location.pathname !='/welcome';
 const main = document.querySelector('main')
 
@@ -28,15 +30,14 @@ const notLoggedInRouter = (
 const loggedInRouter =(
   <Router history = {browserHistory}>
     <Route path='/' component = {App}>
-      <Route path='profile' component = {Profile}/>
+      <IndexRoute component = {Profile}/>
+      <Route path='user/:id' component = {ProfileOP}/>
       <Route path='editProfile' component = {EditProfile}/>
+      <Route path='friends' component = {Friends}/>
       <Route path='chatRooms' component = {ChatRooms}/>
     </Route>
   </Router>
 )
-// <IndexRoute component = {Profile}/>
-// <Route path='user/:id' component = {ProfileOP}/>
-// <Route path='friends' component = {Friends}/>
 
 var elem = location.pathname === '/welcome' ? notLoggedInRouter : loggedInRouter;
 

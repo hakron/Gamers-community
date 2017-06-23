@@ -16,7 +16,6 @@ export default class EditBio extends React.Component {
     this.props.closeBioModal();
   }
   handleChangeBio(e) {
-    console.log(e.target.bio);
     this.setState({
       [e.target.name] : e.target.value
     });
@@ -37,7 +36,7 @@ export default class EditBio extends React.Component {
 
         <div id="bio-modal">
             <div id="bio-form">
-            <input type="text" name="bio"  maxlength="250" onChange={this.handleChangeBio}/>
+            <input  placeholder="Say something about you....." type="text" name="bio"  maxlength="250" onChange={this.handleChangeBio}/>
               <Button id="btn-upload" onClick={this.handleBioSubmit}>Post it</Button>
               <Button id="btn-close" onClick={this.closeBioModal}>Close</Button>
             </div>

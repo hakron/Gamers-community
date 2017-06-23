@@ -18,6 +18,15 @@ router.route('/getUserProfileInfo')
   });
 });
 
+router.route('/getAllUserNames')
+  .get(requireUser, (req, res) => {
+    db.getUsersNames().then(function(results) {
+      res.json({
+        success: true,
+        usernames: res.results.username
+      });
+    });
+  });
 function requireUser(req, res, next){
   if(req.session.user){
     return next();

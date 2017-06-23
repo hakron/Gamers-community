@@ -16,7 +16,6 @@ export default class RegisterForm extends React.Component{
   handleSubmit(e){
     const { username, name, lastname, country, city, age, email, password} = this.state;
     e.preventDefault();
-    console.log(this.state,"this is the state");
     axios.post('/registerNewUser', {
       username, name, lastname, country, city, age, email, password
     })
@@ -36,7 +35,7 @@ export default class RegisterForm extends React.Component{
   render() {
     return (
       <div id="form-regis-cnt">
-          <Image src="/static/imgs/controller.png" responsive/>
+          <Image src="/static/imgs/logo.png" responsive/>
         <Form id="form-new-user-cnt" horizontal>
 
         <FormGroup controlId="formHorizontalUserName" validationState={this.state.validationState}>

@@ -18,19 +18,11 @@ export default class WallForm extends React.Component {
       [e.target.name] : e.target.value
     });
   }
-  handleCommentSubmit(e){
+  handleCommentSubmit(){
     const { comment } = this.state;
-    e.preventDefault();
-    console.log(this.props.commentedId);
-    axios.post(`/insertComment/${ this.props.commentedId }`,{ comment })
-    .then((res) => {
-      let newComment = res.data.comment;
-      this.props.setComment(newComment);
-    });
+      this.props.setComment(comment)
   }
   render() {
-    // console.log("inside wall form render", this.props.setComment);
-
     return (
 
       <div id="wallform-cnt">

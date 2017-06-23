@@ -2,7 +2,7 @@ import React from 'react';
 import axios from '../axios';
 import {Button, Form, Image, FormGroup, ControlLabel, FormControl, Modal} from 'react-bootstrap';
 import {Router, Route, Link, IndexRoute, hashHistory, browserHistory, IndexLink } from 'react-router';
-//change name to App?
+// import SearchBar from './SearchBar';
 export default class AppNav extends React.Component{
   constructor(props) {
     super(props);
@@ -12,7 +12,7 @@ export default class AppNav extends React.Component{
   componentDidMount() {
     axios.get('/getUserProfileInfo').then((res) => {
       let profilePicUrl;
-      if (res.data.results.profilePicUrl === null) {
+      if (res.data.results.profilePicUrl === null ) {
 
         profilePicUrl = '/static/imgs/profilepic.png'
       } else {
@@ -39,11 +39,12 @@ export default class AppNav extends React.Component{
                 <p id="user-info">{this.state.username}</p>
               </div>
               <div id="nav">
-              <Link to="profile" activeClassName='active'>Profile</Link>
+              <IndexLink to="/" activeClassName='active'>Profile</IndexLink>
               <Link to="friends" activeClassName='active'>Friends</Link>
               <Link to="chatRooms" activeClassName='active'>Chat Room</Link>
               <a href="https://www.polygon.com" target="_blank"> Polygon </a>
               <a href="https://www.twitch.com" target="_blank"> Twitch Tv </a>
+
               <a href="/logout"><Image src="/static/imgs/logout.png" responsive/> </a>
               </div>
               <div id="logo">

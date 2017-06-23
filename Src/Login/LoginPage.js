@@ -12,7 +12,6 @@ export default class LoginPage extends React.Component {
     this.state = {}
   }
   componentDidMount(){
-    console.log("LoginPage componentDidMount");
     axios({
       method: 'get',
       url: 'https://api.twitch.tv/kraken/streams/?limit=3',
@@ -21,17 +20,13 @@ export default class LoginPage extends React.Component {
         'Client-ID': 'duecfq1es6f5rgg0bxny2jgir00ggz'
       }
     }).then((response) => {
-      console.log(response);
         this.setState({ streams: response.data.streams }, function(){
-          console.log("inside setState finished");
-          console.log(this.state.streams);
         });
     }).catch(function(err){
       console.log(err);
     })
   }
   renderStreams() {
-      console.log("renderStreams started", this.state.streams);
     return this.state.streams.map((stream)=> {
       return (
         <Stream stream = {stream}/>

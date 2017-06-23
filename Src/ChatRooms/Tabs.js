@@ -11,17 +11,16 @@ export default class Tabs extends React.Component{
 
   }
   handleTabsClick(index, e){
-
+    console.log(index);
     this.setState({selected: index});
   }
   renderTitles() {
     function labels(child, index) {
-      let activeClass = (this.state.selected === index ? 'active' : '');
+      let activeClass = (this.state.selected === index ? 'active-room' : '');
       return (
-        <li key={index}>
-          <a href="#" onClick={this.handleTabsClick(this, index)}>
+        <li className={activeClass} key={index}
+        onClick={ ()=> this.handleTabsClick(index)}>
             {child.props.label}
-          </a>
         </li>
       );
     }
