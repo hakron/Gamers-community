@@ -12,7 +12,7 @@ export default class ChatRooms extends React.Component{
   render() {
       return (
         <div>
-          <Tabs selected={0}>
+          <Tabs >
             <Panes label="Main Room">
               <Chat chatRoomName="Main Room"/>
             </Panes>

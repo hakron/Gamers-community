@@ -2,7 +2,7 @@ import axios from 'axios';
 import * as io from 'socket.io-client';
 
 let socket;
-var rooms = ["Main Room", "World of Warcraft", "League of Legends", "Counter Strike", "Squad"]
+var rooms = ["Main Room"];
 
 const getSocket = () => {
     if (socket) {
@@ -11,7 +11,7 @@ const getSocket = () => {
         socket = io.connect();
         socket.on('connect', function() {
             axios.get(`/connected/${socket.id}`);
-            socket.emit('rooms', rooms);
+            socket.emit("Main Room", rooms);
         });
         return socket;
     }

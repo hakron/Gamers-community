@@ -162,7 +162,6 @@ html {
 #nav {
   display: flex;
   flex-direction: row;
-  margin-left: 30px;
   margin-top: 10px;
 }
 #nav .img-responsive {
@@ -278,6 +277,11 @@ html {
   padding-right: 5px;
   border-right: solid 1px #fff;
 }
+#author-data .img-responsive {
+  height: 100px;
+  width: 100px;
+  margin-top: 10px;
+}
 #chat-message{
   align-self: center;
   margin: 5px;
@@ -353,11 +357,6 @@ html {
 }
 /*<============= wall container =============>*/
 #wall-cnt {
-  /*display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  height:auto;*/
-  margin-left: 50px;
   margin-top: 50px;
   }
 #wallform-cnt {

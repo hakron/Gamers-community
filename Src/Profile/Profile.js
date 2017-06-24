@@ -22,7 +22,6 @@ export default class Profile extends React.Component {
     this.openUsernameModal = this.openUsernameModal.bind(this);
     this.closeUsernameModal = this.closeUsernameModal.bind(this);
     this.setUsername = this.setUsername.bind(this);
-
   }
 
   openModal() {
@@ -91,7 +90,7 @@ export default class Profile extends React.Component {
   }
   render() {
     return (
-      <div >
+      <div>
         <div id="profile-cnt">
           <div id="profile-user-info">
             <Image src={this.state.profilePicUrl} onClick={this.openModal} thumbnail responsive/>

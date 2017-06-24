@@ -5,7 +5,7 @@ export default function ChatMessage(props) {
     return (
       <div id='chat-message-wrapper'>
         <div id="author-data">
-          <img src={props.chatMessage.profilePicUrl} />
+          <Image src={props.chatMessage.profilePicUrl} responsive/>
           <p>{props.chatMessage.username}</p>
           <p>{props.chatMessage.city} {props.chatMessage.country}</p>
           <p>{props.chatMessage.date}</p>

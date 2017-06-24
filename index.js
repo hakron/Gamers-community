@@ -69,6 +69,7 @@ app.get('/chatMessages', (req, res) => {
   });
 });
 
+
 app.get('/onlineFriends', requireUser, (req, res) => {
   if(onlineUsers.length > 0){
     console.log("GET /onlineFriends", onlineUsers);
@@ -101,36 +102,29 @@ app.get('*', function(req, res) {
 server.listen(port, function() {
   console.log("Hi there",port);
 });
-//change app in listen to server
+
 io.on('connection', function(socket) {
   console.log(`socket with the id ${socket.id} is now connected`);
-  socke.on('rooms', function(rooms) {
-        socket.join(rooms);
-    });
+
   socket.on('disconnect', function() {
     for (var i = 0; i < onlineUsers.length; i++) {
       if (onlineUsers[i].socketId == socket.id) {
-        onlineUsers.splice(i, 1); //cehck to see if there is none left in the list with that user id
+        onlineUsers.splice(i, 1);
       }
     }
     console.log(`socket with the id ${socket.id} is now disconnected`);
     console.log('onlineUsers after disconnection', onlineUsers);
     io.sockets.emit('updateOnlineUsers');
   });
+
   socket.on('chat', (messageData) => {
     console.log("recived new chat msg", messageData);
     chatMessages.push(messageData);
     console.log("newChatMsgs", chatMessages);
-    io.sockets.in(rooms).emit('updateChat', chatMessages.slice(Math.max(chatMessages.length - 10, 0)));
+    io.sockets.emit('updateChat', chatMessages.slice(Math.max(chatMessages.length - 5, 0)));
   });
-    socket.on('switchRoom', function(newroom){
-  		socket.leave(socket.room);
-      socket.join(newroom);
-      socket.room = newroom;
-      socket.emit('updaterooms', rooms, newroom);
-  });
+
 });
-//use this everytime i made a getrequest
 function requireUser(req, res, next){
   if(req.session.user){
     return next();
