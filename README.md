@@ -20,5 +20,5 @@ The users can also chat with the people who is only at the moment. They can clic
 If you want to go back to your profile you only need to click in the link Profile in the Nav.
 
   Project created with:
-  
-  o	Javascript  | Reactjs | NodeJs | Express.js | Axios | PostgreSQL | SQL | HTML | CSS | Socket.io | Twitch API
+
+    o	Javascript  | Reactjs | NodeJs | Express.js | Axios | PostgreSQL | SQL | HTML | CSS | Socket.io | Twitch API
